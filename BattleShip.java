@@ -1,4 +1,4 @@
-import java.util.Arrays; // this is BattleShipNet
+import java.util.Arrays; // this is BattleShipNet now changed
 import java.util.ArrayList;
 public class BattleShip {
 	String[][] player1board;
