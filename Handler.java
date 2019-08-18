@@ -21,8 +21,7 @@ public class Handler implements Runnable {
 			BufferedReader playerInput = new BufferedReader(new InputStreamReader(this.connectionSock.getInputStream())); // this is recieving data from the client
 			int [] shipLengths = new int [] {5, 4};
 			
-			switch (this.playerID) {
-			case 2:
+			if (this.playerID == 2) {
 				sendMessage("\nYou are player '2', you will go second." + "\r\n");
 				int ship = 0;
 				while (game.player2placements != shipLengths.length) {
@@ -44,10 +43,10 @@ public class Handler implements Runnable {
 						Thread.sleep(500);
 					}
 				}
-				break;
-			case 1:
+			}
+			else if (this.playerID == 1) {
 				sendMessage("\nYou are player '1', you will go first." + "\r\n");
-				ship = 0;
+				int ship = 0;
 				while (game.player1placements != shipLengths.length) {
 					sendMessage(this.game.toString(1));
 					sendMessage("Place a ship of size " + shipLengths[ship] + ": " + "\r\n");
@@ -67,9 +66,6 @@ public class Handler implements Runnable {
 						Thread.sleep(500);
 					}
 				}
-				break;
-			default:
-				break;
 			}
 			while (!this.game.gameOver()) {
 				sendMessage(this.game.toString(playerID)); 
